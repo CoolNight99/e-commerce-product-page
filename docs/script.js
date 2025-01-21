@@ -13,6 +13,7 @@ const notifications = document.querySelector(".notifications");
 const cartDiv = document.querySelector(".cart-div");
 const addtoCartBtn = document.querySelector(".add-to-cart-btn");
 const priceInCart = document.querySelector(".price-in-cart");
+const deleteIcon = document.querySelector(".delete-icon");
 
 const menuIcon = document.querySelector(".menu-icon")
 const sidebar = document.querySelector(".sidebar");
@@ -190,6 +191,18 @@ function addtoCart() {
     });
 }
 
+function deleteItem() {
+    deleteIcon.addEventListener("click", () => {
+        console.log("test");
+        productQty.innerText = 0;
+        notifications.style.display = "none";
+        cartDiv.innerHTML = `
+        <p class="cart-heading">Cart</p>
+        <hr>
+        <p class="cart-empty">Your cart is empty</p>`
+    });
+}
+
 function changeMainImageMobile() {
     const mainImage = document.querySelector(".main-image");
     const thumbnails = document.querySelectorAll(".thumbnail");
@@ -237,7 +250,6 @@ function changeMainImageMobile() {
     nextIconMobile.addEventListener("click", () => {
         updateMainImageMobile(currentIndex + 1);
     });
-
 }
 
 menuIcon.addEventListener("click", () => {

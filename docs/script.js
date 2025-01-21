@@ -1,6 +1,7 @@
 const mainImage = document.querySelector(".main-image");
 const minusIcon = document.querySelector(".minus-icon");
 let productQty = document.querySelector(".product-qty");
+let productQtyNotifications = document.querySelector(".product-qty-notifications");
 const plusIcon = document.querySelector(".plus-icon");
 
 const lightbox = document.querySelector(".lightbox");
@@ -8,6 +9,7 @@ const closeLightboxIcon = document.querySelector(".close-lightbox-icon");
 const lightboxMainImage = document.querySelector(".lightbox .main-image");
 
 const cart = document.querySelector(".cart");
+const notifications = document.querySelector(".notifications");
 const cartDiv = document.querySelector(".cart-div");
 const addtoCartBtn = document.querySelector(".add-to-cart-btn");
 const priceInCart = document.querySelector(".price-in-cart");
@@ -33,6 +35,17 @@ function changeProductQty() {
     plusIcon.addEventListener("click", () => {
         productQty.innerText++;
     });
+}
+
+function changeProductQtyNotifications(productQty) {
+    if (productQty.innerText == 0) {
+        notifications.style.display = "none";
+    }
+
+    else {
+        productQtyNotifications.innerText = productQty.innerText;
+        notifications.style.display = "block";
+    }
 }
 
 function changeMainImage() {
@@ -157,6 +170,8 @@ cart.addEventListener("click", () => {
 
 function addtoCart() {
     addtoCartBtn.addEventListener("click", () => {
+        changeProductQtyNotifications(productQty);
+
         if (productQty.innerText > 0) {
             cartDiv.style.justifyContent = "center";
             cartDiv.innerHTML = `
@@ -168,6 +183,7 @@ function addtoCart() {
                     <p>Fall Limited Edition Sneakers</p>
                     <p class="price-in-cart">$125.00 x ${productQty.innerText} <span class="final-price">$${125 * parseInt(productQty.innerText)}.00</span></p>
                 </div>
+                <img src="./images/icon-delete.svg" alt="delete icon" class="delete-icon">
             </div>
             <button class="checkout-btn">Checkout</button>`
         }

@@ -146,6 +146,22 @@ hr {
     height: 3.125rem;
 }
 
+.notifications {
+    position: absolute;
+    font-size: 0.625rem;
+    background-color: hsl(26, 100%, 55%);
+    padding: 0.3125rem 0.625rem;
+    top: 1.875rem;
+    right: 5rem;
+    border-radius: 30%;
+    color: hsl(0, 0%, 100%);
+    display: none;
+}
+
+.notifications p {
+    margin: 0;
+}
+
 .cart-div {
     display: none;
     position: absolute;
@@ -176,6 +192,10 @@ hr {
 .price-in-cart-div {
     display: flex;
     flex-direction: column;
+}
+
+.delete-icon {
+    cursor: pointer;
 }
 
 /* lightbox */

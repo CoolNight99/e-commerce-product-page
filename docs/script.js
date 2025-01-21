@@ -191,17 +191,16 @@ function addtoCart() {
     });
 }
 
-function deleteItem() {
-    deleteIcon.addEventListener("click", () => {
-        console.log("test");
+cartDiv.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-icon")) {
         productQty.innerText = 0;
         notifications.style.display = "none";
         cartDiv.innerHTML = `
         <p class="cart-heading">Cart</p>
         <hr>
-        <p class="cart-empty">Your cart is empty</p>`
-    });
-}
+        <p class="cart-empty">Your cart is empty</p>`;
+    }
+});
 
 function changeMainImageMobile() {
     const mainImage = document.querySelector(".main-image");
